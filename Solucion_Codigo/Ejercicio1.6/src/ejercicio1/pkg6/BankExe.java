@@ -93,14 +93,6 @@ class Account {
         this.numAccount = numAccount;
     }
 
-    public String getClientName() {
-        return clientName;
-    }
-
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
-    }
-
     public double getBalance() {
         return balance;
     }

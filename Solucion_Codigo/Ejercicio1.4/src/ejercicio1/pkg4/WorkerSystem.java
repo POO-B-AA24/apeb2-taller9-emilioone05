@@ -2,8 +2,6 @@ package ejercicio1.pkg4;
 
 import java.util.ArrayList;
 import java.util.List;
-
-// Ejemplo de uso
 public class WorkerSystem {
     public static void main(String[] args) {
         Boss boss = new Boss("Daniel", "Irene", "24 de Mayo", "1105819153", 3000);
@@ -25,7 +23,7 @@ public class WorkerSystem {
     }
 }
 
-// Clase PayRollWorkers
+// Clase de las nominas de los trabajadores
 class PayRollWorkers {
     private List<Worker> workers;
 
@@ -52,7 +50,7 @@ class PayRollWorkers {
     }
 }
 
-// Clase base Worker
+// Clase del trabajador
 abstract class Worker {
     protected String name;
     protected String lastName;
@@ -76,7 +74,7 @@ abstract class Worker {
     public abstract void calcuSalary();
 }
 
-// Clase Boss
+// ClaseJefe
 class Boss extends Worker {
     public Boss(String name, String lastName, String Adress, String DNI, double salary) {
         super(name, lastName, Adress, DNI, null);
@@ -89,7 +87,7 @@ class Boss extends Worker {
     }
 }
 
-// Clase Mensuality
+// Clase Fijo 
 class Mensuality extends Worker {
     private double fixedSalary;
 
@@ -104,7 +102,7 @@ class Mensuality extends Worker {
     }
 }
 
-// Clase CommissionAgent
+// Clase Comisionistas
 class CommissionAgent extends Worker {
     private double commissionRate;
     private double sales;
@@ -126,7 +124,7 @@ class CommissionAgent extends Worker {
     }
 }
 
-// Clase ByHours
+// Clase Por Horas
 class ByHours extends Worker {
     private double hourlyRate;
     private double extraHourlyRate;

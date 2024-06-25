@@ -1,23 +1,6 @@
 package ejercicio3;
-// Clase principal que ejecuta el sistema de mensajería
 
 public class MessageSystem {
-
-    // Constructor de la clase MessageSystem
-    public MessageSystem() {
-    }
-
-    // Método para enviar un mensaje
-    public void sendMessage(Messages mess) {
-        System.out.println("Enviando mensaje de " + mess.sender + " a " + mess.addressee);
-        // Aquí se implementaría la lógica para enviar el mensaje
-    }
-
-    // Método para ver un mensaje
-    public void viewMessage(Messages mess) {
-        System.out.println("Viendo mensaje:");
-        System.out.println(mess);
-    }
 
     // Método principal para ejecutar el sistema
     public static void main(String[] args) {
@@ -35,6 +18,23 @@ public class MessageSystem {
         messageSystem.viewMessage(sms);
         messageSystem.viewMessage(mms);
     }
+
+    // Constructor de la clase MessageSystem
+    public MessageSystem() {
+    }
+
+    // Método para enviar un mensaje
+    public void sendMessage(Messages mess) {
+        System.out.println("Enviando mensaje de " + mess.sender + " a " + mess.addressee);
+        // Aquí se implementaría la lógica para enviar el mensaje
+    }
+
+    // Método para ver un mensaje
+    public void viewMessage(Messages mess) {
+        System.out.println("Viendo mensaje:");
+        System.out.println(mess);
+    }
+
 }
 
 // Clase base para representar un mensaje

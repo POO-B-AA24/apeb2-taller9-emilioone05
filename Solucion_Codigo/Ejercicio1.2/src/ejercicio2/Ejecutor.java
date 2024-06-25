@@ -1,21 +1,22 @@
 package ejercicio2;
-import java.util.Arrays;
-import java.util.List;
 
-public class Ejecutor  {
+public class Ejecutor {
     public static void main(String[] args) {
         // Crear una película en DVD
         DVD dvd = new DVD(5.0);
-        List<String> dvdLanguages = Arrays.asList("English", "Spanish");
-        Movie dvdMovie = new Movie("Movie Title", "Movie Author", 2020, 3.0, dvdLanguages, dvd);
+        Movie dvdMovie = new Movie("InsideOut", "Jeank", 2020, 10, "English", dvd);
 
         // Crear una película en VHS
         VHS vhs = new VHS("VHS-C");
-        List<String> vhsLanguages = Arrays.asList("English");
-        Movie vhsMovie = new Movie("VHS Movie Title", "VHS Movie Author", 1990, 2.0, vhsLanguages, vhs);
+        Movie vhsMovie = new Movie("El gran Dictador", "Charles Chaplin", 1940, 10, "German", vhs);
 
-        // Calcular precios
+        // Mostrar información detallada de las películas
+        System.out.println("DVD Movie:");
+        System.out.println(dvdMovie); // Esto imprimirá toda la información usando toString()
         System.out.println("DVD Movie Price: " + Movie.calculatePrice(dvdMovie));
+
+        System.out.println("\nVHS Movie:");
+        System.out.println(vhsMovie); // Esto imprimirá toda la información usando toString()
         System.out.println("VHS Movie Price: " + Movie.calculatePrice(vhsMovie));
     }
 }
@@ -26,10 +27,10 @@ class Movie {
     private String author;
     private int editionYear;
     private double price;
-    private List<String> languages;
+    private String languages;
     private Support support;
 
-    public Movie(String title, String author, int editionYear, double price, List<String> languages, Support support) {
+    public Movie(String title, String author, int editionYear, double price, String languages, Support support) {
         this.title = title;
         this.author = author;
         this.editionYear = editionYear;
@@ -37,27 +38,9 @@ class Movie {
         this.languages = languages;
         this.support = support;
     }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public int getEditionYear() {
-        return editionYear;
-    }
-
     public double getPrice() {
         return price;
     }
-
-    public List<String> getLanguages() {
-        return languages;
-    }
-
     public Support getSupport() {
         return support;
     }
@@ -69,13 +52,34 @@ class Movie {
             return movie.getPrice();
         }
     }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", editionYear=" + editionYear +
+                ", price=" + price +
+                ", languages='" + languages + '\'' +
+                ", support=" + describeSupport() +
+                '}';
+    }
+
+    private String describeSupport() {
+        if (support instanceof DVD) {
+            return "DVD with capacity " + ((DVD) support).getCapacityGB() + "GB";
+        } else if (support instanceof VHS) {
+            return "VHS with tape type " + ((VHS) support).getTypeTape();
+        } else {
+            return "Unknown support type";
+        }
+    }
 }
 
+// Clase Support 
 class Support {
     public Support() {}
 }
-
-// Clase DVD que hereda de Support
 class DVD extends Support {
     private double capacityGB;
 
@@ -88,7 +92,6 @@ class DVD extends Support {
     }
 }
 
-// Clase VHS que hereda de Support
 class VHS extends Support {
     private String typeTape;
 
